@@ -1,6 +1,7 @@
 package de.neuefische.mucjava231javafxstudents.controller;
 
 import de.neuefische.mucjava231javafxstudents.model.Student;
+import de.neuefische.mucjava231javafxstudents.service.StudentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,8 @@ public class RegistrationViewController {
     private CheckBox gdprCheckbox;
     @FXML
     private Label labelErrorMessage;
+
+    private StudentService studentService = StudentService.getInstance();
 
     public void setStudentDataInFields(Student studentToEdit) {
         firstNameField.setText(studentToEdit.firstName());
@@ -80,6 +83,7 @@ public class RegistrationViewController {
             RegistrationConfirmationViewController registrationConfirmationViewController = loader.getController();
 
             Student newStudent = new Student(firstNameField.getText(), lastNameField.getText(), emailField.getText(), courseOfStudiesField.getText());
+            studentService.saveStudent(newStudent);
             registrationConfirmationViewController.setSelectedStudent(newStudent);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

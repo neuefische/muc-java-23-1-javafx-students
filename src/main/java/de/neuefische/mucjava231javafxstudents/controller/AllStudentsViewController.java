@@ -1,6 +1,7 @@
 package de.neuefische.mucjava231javafxstudents.controller;
 
 import de.neuefische.mucjava231javafxstudents.model.Student;
+import de.neuefische.mucjava231javafxstudents.service.StudentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,15 +25,13 @@ public class AllStudentsViewController {
     @FXML
     private Button editStudentButton;
 
+    private StudentService studentService = StudentService.getInstance();
+
     public void initialize() {
         // Hier stellen wir die Daten der ListView ein
         //  listView.getItems() = Liste der Elemente aus listView holen
         // .addAll() = Elemente zur Liste hinzufügen
-        listView.getItems().addAll(Arrays.asList(
-                new Student("Max", "Mustermann", "max@jahoo.de", "Sport"),
-                new Student("Erika", "Mustermann", "erika@gmail.com", "Kunst"),
-                new Student ("Willi", "Wichtig", "wiktiigg123@spammail.de", "Cybersecurity")
-        ));
+        listView.getItems().addAll(studentService.getAllStudents());
 
         listView.getSelectionModel()
                 .selectedItemProperty()
