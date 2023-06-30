@@ -1,5 +1,6 @@
 package de.neuefische.mucjava231javafxstudents.controller;
 
+import de.neuefische.mucjava231javafxstudents.model.Student;
 import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
@@ -18,9 +19,8 @@ import java.util.Arrays;
 
 public class AllStudentsViewController {
 
-    // Wir benutzen die ListView vom Typ <String>
     @FXML
-    private ListView<String> listView;
+    private ListView<Student> listView;
     @FXML
     private Text text;
 
@@ -28,15 +28,18 @@ public class AllStudentsViewController {
         // Hier stellen wir die Daten der ListView ein
         //  listView.getItems() = Liste der Elemente aus listView holen
         // .addAll() = Elemente zur Liste hinzufügen
-        listView.getItems().addAll(Arrays.asList("Paramore", "Sum 41", "Green Day", "Linkin Park"));
+        listView.getItems().addAll(Arrays.asList(
+                new Student("Max", "Mustermann", "max@jahoo.de", "Sport"),
+                new Student("Erika", "Mustermann", "erika@gmail.com", "Kunst"),
+                new Student ("Willi", "Wichtig", "wiktiigg123@spammail.de", "Cybersecurity")
+        ));
 
         listView.getSelectionModel()
                 .selectedItemProperty()
                 // Listener der etwas macht
                 .addListener(
                         (observableValue, s, t1) -> {
-                            System.out.println(listView.getSelectionModel().getSelectedItem());
-                            text.setText(listView.getSelectionModel().getSelectedItem());
+                            text.setText(listView.getSelectionModel().getSelectedItem().firstName() + " " + listView.getSelectionModel().getSelectedItem().lastName());
                         }
                 );
     }
