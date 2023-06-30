@@ -59,12 +59,12 @@ public class AllStudentsViewController {
 
     @FXML
     public void switchToRegistrationViewEditSelectedStudent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/registration-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/update-view.fxml"));
         Parent root = loader.load();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        RegistrationViewController registrationViewController = loader.getController();
-        registrationViewController.setStudentDataInFields(listView.getSelectionModel().getSelectedItem());
+        UpdateViewController updateViewController = loader.getController();
+        updateViewController.setStudentDataInFields(listView.getSelectionModel().getSelectedItem());
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

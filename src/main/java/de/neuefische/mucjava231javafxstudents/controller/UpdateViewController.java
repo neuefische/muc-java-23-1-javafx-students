@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegistrationViewController {
+public class UpdateViewController {
 
     @FXML
     private TextField firstNameField;
@@ -26,8 +26,6 @@ public class RegistrationViewController {
     private TextField emailField;
     @FXML
     private TextField courseOfStudiesField;
-    @FXML
-    private CheckBox gdprCheckbox;
     @FXML
     private Label labelErrorMessage;
 
@@ -52,9 +50,6 @@ public class RegistrationViewController {
             return false;
         } else if (courseOfStudiesField.getText() == null || courseOfStudiesField.getText().isEmpty()) {
             labelErrorMessage.setText("Bitte gib einen Studiengang ein");
-            return false;
-        } else if (!gdprCheckbox.isSelected()) {
-            labelErrorMessage.setText("Bitte akzeptiere die Datenschutzerklärung");
             return false;
         } else {
             labelErrorMessage.setText("");
