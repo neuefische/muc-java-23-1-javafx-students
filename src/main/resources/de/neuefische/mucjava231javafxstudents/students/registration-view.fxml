@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane  prefHeight="539.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane fx:controller="de.neuefische.mucjava231javafxstudents.controller.RegistrationViewController"  prefHeight="539.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="539.0" prefWidth="615.0" spacing="20.0">
          <children>
@@ -63,7 +63,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="101.0" prefWidth="615.0" spacing="50.0" VBox.vgrow="ALWAYS">
                <children>
                   <CheckBox fx:id="gdprCheckbox" mnemonicParsing="false" prefHeight="59.0" prefWidth="190.0" text="Datenschutzerklärung gelesen" />
-                  <Button id="registerButton" fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" text="Registrieren" textAlignment="CENTER" />
+                  <Button onAction="#switchToRegistrationConfirmationView" id="registerButton" fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" text="Registrieren" textAlignment="CENTER" />
                </children>
                <padding>
                   <Insets left="20.0" />

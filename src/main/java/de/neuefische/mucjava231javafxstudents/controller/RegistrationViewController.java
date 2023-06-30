@@ -10,11 +10,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WelcomeViewController {
+public class RegistrationViewController {
 
     @FXML
-    public void switchToRegistrationView(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/registration-view.fxml"));
+    public void switchToWelcomeView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/welcome-view.fxml"));
         Parent root = loader.load();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -26,8 +26,8 @@ public class WelcomeViewController {
     }
 
     @FXML
-    public void switchToAllStudentsView(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/all-students-view.fxml"));
+    public void switchToRegistrationConfirmationView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/registration-confirmation-view.fxml"));
         Parent root = loader.load();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -32,9 +32,9 @@
                 </Label>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                     <children>
-                        <Button minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0"
+                        <Button onAction="#switchToAllStudentsView" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0"
                                 text="Alle Studenten sehen"/>
-                        <Button onAction="#switchToRegistrationScene" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Registrieren"/>
+                        <Button onAction="#switchToRegistrationView" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Registrieren"/>
                     </children>
                 </HBox>
             </children>
