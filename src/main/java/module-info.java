@@ -4,6 +4,7 @@ module de.neuefische.mucjava231javafxstudents {
     requires com.fasterxml.jackson.databind;
 
     requires org.controlsfx.controls;
+    requires java.net.http;
 
     opens de.neuefische.mucjava231javafxstudents to javafx.fxml;
     exports de.neuefische.mucjava231javafxstudents;

@@ -10,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.List;
 
 public class AllStudentsViewController {
 
@@ -27,7 +28,8 @@ public class AllStudentsViewController {
         // Hier stellen wir die Daten der ListView ein
         //  listView.getItems() = Liste der Elemente aus listView holen
         // .addAll() = Elemente zur Liste hinzufügen
-        listView.getItems().addAll(studentService.getAllStudents());
+        List<Student> allStudents = studentService.getAllStudents();
+        listView.getItems().addAll(allStudents);
 
         listView.getSelectionModel()
                 .selectedItemProperty()
