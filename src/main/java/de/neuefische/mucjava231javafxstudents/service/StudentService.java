@@ -22,6 +22,7 @@ public class StudentService {
         ));
     }
 
+    // Singleton -> es gibt nur eine Instanz von StudentService
     public static synchronized StudentService getInstance() {
         if (instance == null) {
             instance = new StudentService();
@@ -42,9 +43,10 @@ public class StudentService {
         return studentWithId;
     }
 
-    public void updateStudent(Student student) {
+    public Student updateStudent(Student student) {
         students.removeIf(studentFromList -> studentFromList.id().equals(student.id()));
         students.add(student);
+        return student;
     }
 
     public List<Student> getAllStudents() {

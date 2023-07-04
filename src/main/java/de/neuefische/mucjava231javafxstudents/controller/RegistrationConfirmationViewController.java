@@ -48,14 +48,13 @@ public class RegistrationConfirmationViewController {
     }
 
     @FXML
-    public void switchToRegistrationView(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/registration-view.fxml"));
+    public void switchToEditSelectedStudentView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/update-view.fxml"));
         Parent root = loader.load();
 
-        RegistrationViewController registrationViewController = loader.getController();
-        registrationViewController.setStudentDataInFields(selectedStudent);
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        UpdateViewController updateViewController = loader.getController();
+        updateViewController.setStudentDataInFields(selectedStudent);
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

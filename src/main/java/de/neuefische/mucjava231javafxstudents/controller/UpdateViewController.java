@@ -1,7 +1,6 @@
 package de.neuefische.mucjava231javafxstudents.controller;
 
 import de.neuefische.mucjava231javafxstudents.model.Student;
-import de.neuefische.mucjava231javafxstudents.model.StudentWithoutId;
 import de.neuefische.mucjava231javafxstudents.service.StudentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -18,6 +16,7 @@ import java.io.IOException;
 
 public class UpdateViewController {
 
+    private String studentId;
     @FXML
     private TextField firstNameField;
     @FXML
@@ -32,6 +31,7 @@ public class UpdateViewController {
     private StudentService studentService = StudentService.getInstance();
 
     public void setStudentDataInFields(Student studentToEdit) {
+        this.studentId = studentToEdit.id();
         firstNameField.setText(studentToEdit.firstName());
         lastNameField.setText(studentToEdit.lastName());
         emailField.setText(studentToEdit.email());
@@ -78,10 +78,16 @@ public class UpdateViewController {
 
             RegistrationConfirmationViewController registrationConfirmationViewController = loader.getController();
 
-            StudentWithoutId studentData = new StudentWithoutId(firstNameField.getText(), lastNameField.getText(), emailField.getText(), courseOfStudiesField.getText());
-            Student newStudentWithId = studentService.createNewStudent(studentData);
+            Student studentData = new Student(
+                    studentId,
+                    firstNameField.getText(),
+                    lastNameField.getText(),
+                    emailField.getText(),
+                    courseOfStudiesField.getText()
+            );
+            Student updatedStudent = studentService.updateStudent(studentData);
 
-            registrationConfirmationViewController.setSelectedStudent(newStudentWithId);
+            registrationConfirmationViewController.setSelectedStudent(updatedStudent);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

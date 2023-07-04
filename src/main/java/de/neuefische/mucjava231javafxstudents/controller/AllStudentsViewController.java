@@ -14,7 +14,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public class AllStudentsViewController {
 
@@ -58,7 +57,7 @@ public class AllStudentsViewController {
     }
 
     @FXML
-    public void switchToRegistrationViewEditSelectedStudent(ActionEvent event) throws IOException {
+    public void switchToEditSelectedStudentView(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/update-view.fxml"));
         Parent root = loader.load();
 
@@ -73,7 +72,7 @@ public class AllStudentsViewController {
     }
 
     @FXML
-    public void switchToRegistrationViewCreateNewStudent(ActionEvent event) throws IOException {
+    public void switchToCreateNewStudentView(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/registration-view.fxml"));
         Parent root = loader.load();
 
