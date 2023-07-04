@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class UpdateViewController {
 
-    private String studentId;
+    private String matriculationNumber;
     @FXML
     private TextField firstNameField;
     @FXML
@@ -28,7 +28,7 @@ public class UpdateViewController {
     private final SceneSwitchService sceneSwitchService = SceneSwitchService.getInstance();
 
     public void setStudentDataInFields(Student studentToEdit) {
-        this.studentId = studentToEdit.id();
+        this.matriculationNumber = studentToEdit.matriculationNumber();
         firstNameField.setText(studentToEdit.firstName());
         lastNameField.setText(studentToEdit.lastName());
         emailField.setText(studentToEdit.email());
@@ -44,7 +44,7 @@ public class UpdateViewController {
     public void switchToShowRegisteredStudentView(ActionEvent event) throws IOException {
         if (isEveryTextFieldValid()) {
             Student studentData = new Student(
-                    studentId,
+                    matriculationNumber,
                     firstNameField.getText(),
                     lastNameField.getText(),
                     emailField.getText(),

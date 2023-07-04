@@ -1,7 +1,7 @@
 package de.neuefische.mucjava231javafxstudents.service;
 
 import de.neuefische.mucjava231javafxstudents.model.Student;
-import de.neuefische.mucjava231javafxstudents.model.StudentWithoutId;
+import de.neuefische.mucjava231javafxstudents.model.StudentWithoutMatriculationNumber;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class StudentService {
         return instance;
     }
 
-    public Student createNewStudent(StudentWithoutId student) {
+    public Student createNewStudent(StudentWithoutMatriculationNumber student) {
         Student studentWithId = new Student(
                 UUID.randomUUID().toString(),
                 student.firstName(),
@@ -44,7 +44,7 @@ public class StudentService {
     }
 
     public Student updateStudent(Student student) {
-        students.removeIf(studentFromList -> studentFromList.id().equals(student.id()));
+        students.removeIf(studentFromList -> studentFromList.matriculationNumber().equals(student.matriculationNumber()));
         students.add(student);
         return student;
     }

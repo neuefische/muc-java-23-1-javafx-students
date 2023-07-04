@@ -1,7 +1,7 @@
 package de.neuefische.mucjava231javafxstudents.controller;
 
 import de.neuefische.mucjava231javafxstudents.model.Student;
-import de.neuefische.mucjava231javafxstudents.model.StudentWithoutId;
+import de.neuefische.mucjava231javafxstudents.model.StudentWithoutMatriculationNumber;
 import de.neuefische.mucjava231javafxstudents.service.SceneSwitchService;
 import de.neuefische.mucjava231javafxstudents.service.StudentService;
 import javafx.event.ActionEvent;
@@ -38,7 +38,7 @@ public class RegistrationViewController {
     @FXML
     public void switchToRegistrationConfirmationView(ActionEvent event) throws IOException {
         if (isEveryTextFieldValid()) {
-            StudentWithoutId studentData = new StudentWithoutId(firstNameField.getText(), lastNameField.getText(), emailField.getText(), courseOfStudiesField.getText());
+            StudentWithoutMatriculationNumber studentData = new StudentWithoutMatriculationNumber(firstNameField.getText(), lastNameField.getText(), emailField.getText(), courseOfStudiesField.getText());
             Student newStudentWithId = studentService.createNewStudent(studentData);
 
             sceneSwitchService.switchToShowRegisteredStudentView(event, newStudentWithId);
