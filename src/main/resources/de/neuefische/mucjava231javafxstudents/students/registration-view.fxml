@@ -70,7 +70,7 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="615.0" spacing="150.0">
                      <children>
                         <Button id="registerButton" fx:id="registerButton1" alignment="CENTER" mnemonicParsing="false" onAction="#switchToWelcomeView" text="Abbrechen" textAlignment="CENTER" />
-                        <Label fx:id="labelErrorMessage" text="" textAlignment="CENTER" textFill="#e44e21" />
+                        <Label fx:id="labelErrorMessage" textAlignment="CENTER" textFill="#e44e21" />
                      </children>
                      <opaqueInsets>
                         <Insets left="20.0" />
