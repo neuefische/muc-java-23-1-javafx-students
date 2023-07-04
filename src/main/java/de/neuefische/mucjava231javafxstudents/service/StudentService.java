@@ -9,8 +9,6 @@ import de.neuefische.mucjava231javafxstudents.model.StudentWithoutMatriculationN
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.net.http.HttpClient;
@@ -18,19 +16,11 @@ import java.net.http.HttpClient;
 public class StudentService {
 
     private static StudentService instance;
-    private final List<Student> students;
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
     private String STUDENTS_URL_BACKEND = "http://localhost:8080/api/students";
 
-    private StudentService() {
-        students = new ArrayList<>();
-        students.addAll(Arrays.asList(
-                new Student("1", "Max", "Mustermann", "max@jahoo.de", "Sport"),
-                new Student("2", "Erika", "Mustermann", "erika@gmail.com", "Kunst"),
-                new Student("3", "Willi", "Wichtig", "wiktiigg123@spammail.de", "Cybersecurity")
-        ));
-    }
+    private StudentService() {}
 
     // Singleton -> es gibt nur eine Instanz von StudentService
     public static synchronized StudentService getInstance() {
@@ -49,18 +39,31 @@ public class StudentService {
                 student.courseOfStudies()
         );
 
-        students.add(studentWithId);
         return studentWithId;
     }
 
     public Student updateStudent(Student student) {
-        students.removeIf(studentFromList -> studentFromList.matriculationNumber().equals(student.matriculationNumber()));
-        students.add(student);
-        return student;
+        try {
+            String requestBody = objectMapper.writeValueAsString(student);
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(STUDENTS_URL_BACKEND + "/" + student.matriculationNumber()))
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .PUT(HttpRequest.BodyPublishers.ofString(requestBody))
+                    .build();
+
+            return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body)
+                    .thenApply(responseBody -> mapToStudent(responseBody))
+                    .join();
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<Student> getAllStudents() {
-
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(STUDENTS_URL_BACKEND))
                 .header("Accept", "application/json")
@@ -68,11 +71,11 @@ public class StudentService {
 
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
-                .thenApply(responseBody -> mapToObjectList(responseBody))
+                .thenApply(responseBody -> mapToStudentList(responseBody))
                 .join();
     }
 
-    private Student mapToObject(String responseBody) {
+    private Student mapToStudent(String responseBody) {
         try {
             return objectMapper.readValue(responseBody, Student.class);
         } catch (JsonProcessingException e) {
@@ -80,7 +83,7 @@ public class StudentService {
         }
     }
 
-    private List<Student> mapToObjectList(String responseBody) {
+    private List<Student> mapToStudentList(String responseBody) {
         try {
             return objectMapper.readValue(responseBody, new TypeReference<>() {});
         } catch (JsonProcessingException e) {
