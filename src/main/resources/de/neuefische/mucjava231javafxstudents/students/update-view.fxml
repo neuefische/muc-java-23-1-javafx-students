@@ -59,7 +59,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="615.0" spacing="50.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button id="registerButton" fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" onAction="#switchToRegistrationConfirmationView" text="Aktualisieren" textAlignment="CENTER" />
+                        <Button id="registerButton" fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" onAction="#switchToShowRegisteredStudentView" text="Aktualisieren" textAlignment="CENTER" />
                      </children>
                      <padding>
                         <Insets left="20.0" />

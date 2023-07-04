@@ -1,16 +1,12 @@
 package de.neuefische.mucjava231javafxstudents.controller;
 
 import de.neuefische.mucjava231javafxstudents.model.Student;
+import de.neuefische.mucjava231javafxstudents.service.SceneSwitchService;
 import de.neuefische.mucjava231javafxstudents.service.StudentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -28,7 +24,8 @@ public class UpdateViewController {
     @FXML
     private Label labelErrorMessage;
 
-    private StudentService studentService = StudentService.getInstance();
+    private final StudentService studentService = StudentService.getInstance();
+    private final SceneSwitchService sceneSwitchService = SceneSwitchService.getInstance();
 
     public void setStudentDataInFields(Student studentToEdit) {
         this.studentId = studentToEdit.id();
@@ -36,6 +33,27 @@ public class UpdateViewController {
         lastNameField.setText(studentToEdit.lastName());
         emailField.setText(studentToEdit.email());
         courseOfStudiesField.setText(studentToEdit.courseOfStudies());
+    }
+
+    @FXML
+    public void switchToWelcomeView(ActionEvent event) throws IOException {
+        sceneSwitchService.switchToWelcomeView(event);
+    }
+
+    @FXML
+    public void switchToShowRegisteredStudentView(ActionEvent event) throws IOException {
+        if (isEveryTextFieldValid()) {
+            Student studentData = new Student(
+                    studentId,
+                    firstNameField.getText(),
+                    lastNameField.getText(),
+                    emailField.getText(),
+                    courseOfStudiesField.getText()
+            );
+            Student updatedStudent = studentService.updateStudent(studentData);
+
+            sceneSwitchService.switchToShowRegisteredStudentView(event, updatedStudent);
+        }
     }
 
     private boolean isEveryTextFieldValid() {
@@ -54,47 +72,6 @@ public class UpdateViewController {
         } else {
             labelErrorMessage.setText("");
             return true;
-        }
-    }
-
-    @FXML
-    public void switchToWelcomeView(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/welcome-view.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-
-        stage.show();
-    }
-
-    @FXML
-    public void switchToRegistrationConfirmationView(ActionEvent event) throws IOException {
-        if (isEveryTextFieldValid()) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/neuefische/mucjava231javafxstudents/students/registration-confirmation-view.fxml"));
-            Parent root = loader.load();
-
-            RegistrationConfirmationViewController registrationConfirmationViewController = loader.getController();
-
-            Student studentData = new Student(
-                    studentId,
-                    firstNameField.getText(),
-                    lastNameField.getText(),
-                    emailField.getText(),
-                    courseOfStudiesField.getText()
-            );
-            Student updatedStudent = studentService.updateStudent(studentData);
-
-            registrationConfirmationViewController.setSelectedStudent(updatedStudent);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-            stage.show();
         }
     }
 }

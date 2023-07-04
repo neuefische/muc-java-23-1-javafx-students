@@ -11,7 +11,7 @@ import java.util.UUID;
 public class StudentService {
 
     private static StudentService instance;
-    private List<Student> students;
+    private final List<Student> students;
 
     private StudentService() {
         students = new ArrayList<>();
