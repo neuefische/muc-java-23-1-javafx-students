@@ -3,6 +3,7 @@ module de.neuefische.mucjava231javafxstudents {
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
+    requires org.kordamp.bootstrapfx.core;
 
     opens de.neuefische.mucjava231javafxstudents to javafx.fxml;
     exports de.neuefische.mucjava231javafxstudents;

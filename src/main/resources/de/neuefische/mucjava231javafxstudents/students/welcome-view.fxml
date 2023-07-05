@@ -9,6 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import java.lang.String?>
 <BorderPane fx:controller="de.neuefische.mucjava231javafxstudents.controller.WelcomeViewController"
             maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
@@ -32,8 +33,14 @@
                 </Label>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                     <children>
-                        <Button onAction="#switchToAllStudentsView" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0"
-                                text="Alle Studenten sehen"/>
+                        <Button  onAction="#switchToAllStudentsView" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0"
+                                text="Alle Studenten sehen">
+                            <styleClass>
+                                <String fx:value="btn" />
+                                <String fx:value="btn-lg" />
+                                <String fx:value="btn-danger" />
+                            </styleClass>
+                        </Button>
                         <Button onAction="#switchToRegistrationView" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Registrieren"/>
                     </children>
                 </HBox>
