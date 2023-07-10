@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class RegistrationViewController {
 
@@ -46,17 +47,20 @@ public class RegistrationViewController {
     }
 
     private boolean isEveryTextFieldValid() {
+        String EMAIL_PATTERN_REGEX = "^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$";
+        Pattern emailPattern = Pattern.compile(EMAIL_PATTERN_REGEX);
+
         if (firstNameField.getText() == null || firstNameField.getText().isEmpty()) {
-            labelErrorMessage.setText("Bitte gib einen Vornamen ein");
+            labelErrorMessage.setText("Bitte gib einen Vornamen ein, der mind. 2 Zeichen lang ist");
             return false;
         } else if (lastNameField.getText() == null || lastNameField.getText().isEmpty()) {
-            labelErrorMessage.setText("Bitte gib einen Nachnamen ein");
+            labelErrorMessage.setText("Bitte gib einen Nachnamen ein, der mind. 2 Zeichen lang ist");
             return false;
-        } else if (emailField.getText() == null || emailField.getText().isEmpty()) {
-            labelErrorMessage.setText("Bitte gib eine E-Mail-Adresse ein");
+        } else if (emailPattern.matcher(emailField.getText()).matches() == false) {
+            labelErrorMessage.setText("Bitte gib eine gültige E-Mail-Adresse im Format <vorname@nachname.de> ein");
             return false;
         } else if (courseOfStudiesField.getText() == null || courseOfStudiesField.getText().isEmpty()) {
-            labelErrorMessage.setText("Bitte gib einen Studiengang ein");
+            labelErrorMessage.setText("Bitte gib einen Studiengang ein, der mind. 2 Zeichen lang ist");
             return false;
         } else if (!gdprCheckbox.isSelected()) {
             labelErrorMessage.setText("Bitte akzeptiere die Datenschutzerklärung");

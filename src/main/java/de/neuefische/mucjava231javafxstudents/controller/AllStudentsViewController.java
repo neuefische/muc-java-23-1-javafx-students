@@ -10,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.List;
 
 public class AllStudentsViewController {
 
@@ -19,6 +20,8 @@ public class AllStudentsViewController {
     private Text text;
     @FXML
     private Button editStudentButton;
+    @FXML
+    private Button deleteStudentButton;
 
     private final StudentService studentService = StudentService.getInstance();
     private final SceneSwitchService sceneSwitchService = SceneSwitchService.getInstance();
@@ -27,7 +30,9 @@ public class AllStudentsViewController {
         // Hier stellen wir die Daten der ListView ein
         //  listView.getItems() = Liste der Elemente aus listView holen
         // .addAll() = Elemente zur Liste hinzufügen
-        listView.getItems().addAll(studentService.getAllStudents());
+        List<Student> allStudents = studentService.getAllStudents();
+        listView.getItems()
+                .addAll(allStudents);
 
         listView.getSelectionModel()
                 .selectedItemProperty()
@@ -36,6 +41,7 @@ public class AllStudentsViewController {
                         (observableValue, s, t1) -> {
                             text.setText(listView.getSelectionModel().getSelectedItem().firstName() + " " + listView.getSelectionModel().getSelectedItem().lastName());
                             editStudentButton.setDisable(false);
+                            deleteStudentButton.setDisable(false);
                         }
                 );
     }
@@ -53,5 +59,10 @@ public class AllStudentsViewController {
     @FXML
     public void switchToEditSelectedStudentView(ActionEvent event) throws IOException {
         sceneSwitchService.switchToEditSelectedStudentView(event, listView.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    public void deleteSelectedStudent() {
+        studentService.deleteStudent(listView.getSelectionModel().getSelectedItem().matriculationNumber(), listView);
     }
 }
