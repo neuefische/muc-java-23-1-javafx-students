@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import java.lang.String?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.neuefische.mucjava231javafxstudents.controller.AllStudentsViewController">
     <top>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studentenübersicht" BorderPane.alignment="CENTER">
@@ -41,7 +42,12 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="71.0" prefWidth="600.0" spacing="20.0">
                             <children>
-                                <Button mnemonicParsing="false" onAction="#switchToWelcomeView" prefHeight="25.0" prefWidth="180.0" text="Zurück zum Start" />
+                                <Button mnemonicParsing="false" onAction="#switchToWelcomeView" prefHeight="25.0" prefWidth="180.0" text="Zurück zum Start"><styleClass>
+                                    <String fx:value="btn" />
+                                    <String fx:value="btn-lg" />
+                                    <String fx:value="btn-primary" />
+                                </styleClass>
+                                </Button>
                                 <Button mnemonicParsing="false" onAction="#switchToCreateNewStudentView" prefHeight="25.0" prefWidth="180.0" text="Neuen Studenten erstellen" />
                             </children>
                         </HBox>

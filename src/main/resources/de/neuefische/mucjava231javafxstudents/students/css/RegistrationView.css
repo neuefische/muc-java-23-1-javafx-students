@@ -1,0 +1,23 @@
+/*Label {*/
+/*    !*-fx-font: Arial, Helvetica, sans-serif;*!*/
+/*    -fx-font: 16px "Arial";*/
+/*    !*-fx-text-fill: #000000;*!*/
+/*}*/
+
+/*Button {*/
+/*    !*-fx-font: Arial, Helvetica, sans-serif;*!*/
+/*    -fx-font: 16px "Arial";*/
+/*    !*-fx-text-fill: #000000;*!*/
+/*}*/
+
+/*TextField {*/
+/*    !*-fx-font: Arial, Helvetica, sans-serif;*!*/
+/*    -fx-font: 16px "Arial";*/
+/*    !*-fx-text-fill: #000000;*!*/
+/*}*/
+
+* {
+    /*-fx-font: Arial, Helvetica, sans-serif;*/
+    -fx-font: 16px "Arial";
+    /*-fx-text-fill: #000000;*/
+}

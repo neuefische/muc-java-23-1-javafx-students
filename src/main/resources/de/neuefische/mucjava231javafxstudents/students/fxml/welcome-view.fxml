@@ -38,10 +38,16 @@
                             <styleClass>
                                 <String fx:value="btn" />
                                 <String fx:value="btn-lg" />
-                                <String fx:value="btn-danger" />
+                                <String fx:value="btn-primary" />
                             </styleClass>
                         </Button>
-                        <Button onAction="#switchToRegistrationView" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Registrieren"/>
+                        <Button onAction="#switchToRegistrationView" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Registrieren">
+                            <styleClass>
+                                <String fx:value="btn" />
+                                <String fx:value="btn-lg" />
+                                <String fx:value="btn-primary" />
+                            </styleClass>
+                        </Button>
                     </children>
                 </HBox>
             </children>

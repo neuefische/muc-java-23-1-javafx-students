@@ -11,7 +11,7 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 public class StudentDBApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("students/welcome-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("students/fxml/welcome-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
