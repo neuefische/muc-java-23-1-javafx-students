@@ -9,7 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.kordamp.bootstrapfx.BootstrapFX;
+//import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
@@ -29,7 +29,7 @@ public class SceneSwitchService {
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+//        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
 
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -83,7 +83,7 @@ public class SceneSwitchService {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+//        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
 
         stage.setScene(scene);
 

@@ -1,0 +1,13 @@
+.list-view {
+    -fx-background-color: #f2f2f2; /* Background color */
+    -fx-font-size: 16px; /* Font size */
+}
+
+.list-cell {
+    -fx-text-fill: #333333; /* Text color */
+}
+
+.list-cell:selected {
+    -fx-background-color: #007bff; /* Selected cell background color */
+    -fx-text-fill: white; /* Selected cell text color */
+}
